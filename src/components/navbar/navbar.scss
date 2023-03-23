@@ -1,0 +1,104 @@
+.navbar-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #ffffff;
+  .navbar-left {
+    display: flex;
+    flex-direction: column;
+
+    // justify-content: space-between;
+
+    .logo {
+      margin-bottom: 1rem;
+      cursor: pointer;
+      //   margin-right: 10.5125rem;
+    }
+  }
+  .navbar-right {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    // background-color: blue;
+    // width: 400px;
+    height: 300px;
+    background-color: #ffffff;
+    right: 0;
+    // display: none;
+    .mobile-only {
+      margin-left: 1rem;
+    }
+    .docs {
+      font-family: "Roboto";
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      margin-right: 3.135rem;
+      text-decoration-line: underline;
+      color: #213f7d;
+      padding-bottom: 0.625rem;
+      cursor: pointer;
+    }
+    .notification {
+      padding-bottom: 0.625rem;
+    }
+    .person-details {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    .bell {
+      cursor: pointer;
+      //   margin-right: 2.0725rem;
+    }
+    .profile {
+      //   margin-left: 0.625rem;
+      .username {
+        font-family: "Fira Sans", sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #213f7d;
+      }
+      .arrow-down {
+        margin-left: 0.625rem;
+      }
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    flex-direction: row;
+    padding: 1.25rem 1.875rem;
+    justify-content: space-between;
+    .navbar-left {
+      flex-direction: row;
+      align-items: center;
+      min-width: 50%;
+      .logo {
+        margin-bottom: 0;
+        margin-right: 10.5125rem;
+      }
+    }
+    .navbar-right {
+      display: flex;
+      background-color: transparent;
+      position: relative;
+      flex-direction: row;
+      align-items: center;
+      padding: 0;
+      height: max-content;
+      .docs,
+      .notification {
+        padding-bottom: 0;
+      }
+      .profile {
+        margin-left: 0.625rem;
+      }
+      .bell {
+        margin-right: 2.0725rem;
+      }
+      .mobile-only {
+        display: none;
+      }
+    }
+  }
+}
