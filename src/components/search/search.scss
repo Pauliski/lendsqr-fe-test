@@ -1,0 +1,31 @@
+.search-wrapper {
+  border: 1px solid rgba(84, 95, 125, 0.15);
+  border-radius: 8px;
+  height: 2.5rem;
+  width: 25rem;
+  display: flex;
+  input {
+    border: none;
+    outline: none;
+    height: 100%;
+    background-color: transparent;
+    padding: 0.75rem;
+    flex: 1;
+    ::placeholder {
+      color: #545f7d;
+    }
+    :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: #545f7d;
+    }
+  }
+  button {
+    border-radius: 0 8px 8px 0;
+    height: 100%;
+    background: #39cdcc;
+    width: 3.5rem;
+    border: none;
+    padding: auto;
+   cursor: pointer;
+  }
+}
