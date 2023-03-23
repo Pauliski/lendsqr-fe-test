@@ -1,0 +1,25 @@
+.input-wrapper {
+  position: relative;
+  // width: 400px;
+  max-width: 27.9375rem;
+  border: 2px solid rgba(84, 95, 125, 0.15);
+  display: flex;
+  padding: 1rem;
+  border-radius: 0.3125rem;
+  margin-bottom: 1.5rem;
+  input {
+    width: 100%;
+    display: inline;
+    border: none;
+    outline: none;
+  }
+  button {
+    background-color: transparent;
+    color: #39cdcc;
+    font-weight: 600;
+    font-size: 0.75rem;
+    border: none;
+    // position: absolute;
+    // right: 0;
+  }
+}

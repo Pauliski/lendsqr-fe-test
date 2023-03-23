@@ -1,0 +1,27 @@
+.login-left-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  // height: 100vh;
+ 
+  .welcome {
+    margin-top: 2rem;
+    align-self: center;
+  }
+ @media screen and (min-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    padding: 6.625rem 0 0 4.1875rem;
+    flex: 1;
+    min-height: 100vh;
+    width: 50%;
+    .welcome {
+    margin-top: 8.6875rem;
+    // align-self: center;
+  }
+  .logo{
+    margin-left: 1.875rem;
+  }
+  }
+  
+}
