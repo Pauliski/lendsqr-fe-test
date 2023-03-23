@@ -12,5 +12,12 @@ html {
 
 .App{
 //  font-family: 'Avenir Next LT Pro', sans-serif;
- font-family: 'Avenir Next Cyr Medium', sans-serif;
+//  font-family: 'Avenir Next Cyr Medium', sans-serif;
+font-family: "Fira Sans", sans-serif;
+//  display: flex;
+.auth-routes{
+    display: flex;
+    // padding: 3.75rem;
+    background-color: #FBFBFB;
+}
 }

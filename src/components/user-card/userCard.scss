@@ -1,0 +1,31 @@
+.usercard-wrapper {
+  background-color: #ffffff;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  width: 240px;
+  height: 160px;
+  padding: 1.25rem 1.875rem;
+  display: flex;
+  flex-direction: column;
+  .icon-wrapper {
+    margin-bottom: 0.875rem;
+  }
+  .card-text {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #545f7d;
+    margin-bottom: 0.75rem;
+  }
+  .card-value {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    text-transform: uppercase;
+    color: #213f7d;
+  }
+}
