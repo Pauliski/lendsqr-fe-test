@@ -19,5 +19,12 @@ font-family: "Fira Sans", sans-serif;
     display: flex;
     // padding: 3.75rem;
     background-color: #FBFBFB;
+    width: 100%;
+    .route-wrapper{
+         background-color: #FBFBFB;
+         padding: 3.75rem;
+         width: calc(100% - 17.6875rem);
+        // order: 1;
+    }
 }
 }

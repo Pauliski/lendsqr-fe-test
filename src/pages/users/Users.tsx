@@ -1,16 +1,15 @@
+import axios from "axios";
 import UserCard from "components/user-card/UserCard";
+import UserTable from "components/user-table/UserTable";
+import { useEffect, useState } from "react";
 import { cardDetails } from "staticData";
 import "./users.scss";
 
 const Users = () => {
-  const user = {
-    icon: "/images/user.svg",
-    text: "USERS",
-    alt: "user",
-    value: "2,453",
-  };
+ 
   return (
     <div className="users-wrapper">
+      <p className="page-title">Users</p>
       <div className="card-wrapper">
         {cardDetails.map((item, index) => (
           <UserCard
@@ -22,8 +21,7 @@ const Users = () => {
           />
         ))}
       </div>
-
-      <span>Users</span>
+      <UserTable />
     </div>
   );
 };

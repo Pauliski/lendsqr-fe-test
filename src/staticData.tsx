@@ -59,3 +59,12 @@ export const cardDetails = [
     value: "102,453",
   },
 ];
+
+export const userTableHeader = [
+  "organization",
+  "Username",
+  "Email",
+  "Phone number",
+  "Date joined",
+  "Status",
+];
