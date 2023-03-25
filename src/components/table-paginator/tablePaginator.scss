@@ -1,0 +1,51 @@
+.paginator-wrapper {
+  margin: 1.25rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // width: 64.8125rem;
+  #page {
+    background: rgba(33, 63, 125, 0.1);
+    border-radius: 4px;
+    margin: 0 0.625rem;
+    width: 5rem;
+    padding: 0.4375rem 0.75rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    color: #213f7d;
+  }
+  .label {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    color: #545f7d;
+  }
+  .btn-wrapper {
+    display: flex;
+    .prev-button {
+      width: 1.5rem;
+      height: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(33, 63, 125, 0.1);
+      border-radius: 4px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+    .num-button {
+      background-color: transparent;
+      border: none;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 19px;
+      color: #545f7d;
+      opacity: 0.6;
+    }
+    .active {
+      opacity: 1;
+    }
+  }
+}

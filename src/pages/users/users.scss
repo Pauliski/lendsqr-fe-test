@@ -1,7 +1,14 @@
-.users-wrapper{
-    padding: 3.75rem;
-    .card-wrapper{
-        display: flex;
-        gap: 1.5625rem;
-    }
+.users-wrapper {
+  .page-title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #213f7d;
+    margin-bottom: 2.5rem;
+  }
+  .card-wrapper {
+    display: flex;
+    gap: 1.5625rem;
+    flex-wrap: wrap;
+  }
 }

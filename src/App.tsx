@@ -7,6 +7,7 @@ import Sidebar from "components/sidebar/Sidebar";
 import Users from "pages/users/Users";
 import UserDetails from "pages/user-detail/UserDetails";
 
+
 function App() {
   return (
     <div className="App">
@@ -16,12 +17,17 @@ function App() {
       <Navbar />
       <main className="auth-routes">
         <Sidebar />
-        <Routes>
-          <Route path="/users" element={<Users />} />
-        </Routes>
-        <Routes>
-          <Route path="/user-details" element={<UserDetails />} />
-        </Routes>
+        <div className="route-wrapper">
+          <Routes>
+            <Route path="/" element={<Users />} />
+          </Routes>
+          <Routes>
+            <Route path="/users" element={<Users />} />
+          </Routes>
+          <Routes>
+            <Route path="/user-details" element={<UserDetails />} />
+          </Routes>
+        </div>
       </main>
     </div>
   );

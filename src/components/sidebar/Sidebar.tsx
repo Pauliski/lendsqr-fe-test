@@ -1,14 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { sidebarNav, businessNav, settingsNav } from "../../staticData";
 import "./sidebar.scss";
 
 const Sidebar = () => {
-  const [activeLink, setActiveLink] = useState<number>(0)
-  const handleClick =  (index: number)=>{
-    setActiveLink(index)
-    console.log(activeLink);
-    
-  }
+  const [activeLink, setActiveLink] = useState<string>("Users");
+  const navigate = useNavigate();
+  const handleClick = (route: string) => {
+    setActiveLink(route);
+    if (route === "Users") {
+      navigate("/user-details");
+    } else {
+      navigate(`/${route.toLocaleLowerCase()}`);
+    }
+  };
   return (
     <aside className="sidebar-wrapper">
       <nav className="switch-wrapper">
@@ -32,11 +37,11 @@ const Sidebar = () => {
           <nav
             key={index}
             className={
-              activeLink === index
+              activeLink === item.text
                 ? "customer-link nav-link link-border"
                 : "customer-link nav-link"
             }
-            onClick={() => handleClick(index)}
+            onClick={() => handleClick(item.text)}
           >
             <img src={item.icon} alt={item.alt} />
             <span className="link-text">{item.text}</span>
