@@ -1,0 +1,31 @@
+.detailsmain-wrapper {
+  margin-top: 2.5rem;
+  background-color: #ffffff;
+  .details-section {
+     padding: 1.875rem 1.875rem 0 1.875rem;
+    .personal-info {
+      display: flex;
+    //   gap: 0 6.25rem;
+    gap: 0 10.2354%;
+      border-bottom: 1px solid hsl(220, 26%, 93%);
+      padding-bottom: 1.875rem;
+      flex-wrap: wrap;
+
+      .info-question {
+        font-weight: 400;
+        font-size: 0.75rem;
+        line-height: 0.875rem;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        color: #545f7d;
+        margin-top: 1.875rem;
+      }
+      .inner-section{
+        display: flex;
+        flex-direction: column;
+        // gap: 0 6.25rem;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}

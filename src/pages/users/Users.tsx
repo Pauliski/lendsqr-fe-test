@@ -6,7 +6,6 @@ import { cardDetails } from "staticData";
 import "./users.scss";
 
 const Users = () => {
- 
   return (
     <div className="users-wrapper">
       <p className="page-title">Users</p>

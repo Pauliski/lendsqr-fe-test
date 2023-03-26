@@ -9,7 +9,7 @@ const Sidebar = () => {
   const handleClick = (route: string) => {
     setActiveLink(route);
     if (route === "Users") {
-      navigate("/user-details");
+      navigate("/users");
     } else {
       navigate(`/${route.toLocaleLowerCase()}`);
     }

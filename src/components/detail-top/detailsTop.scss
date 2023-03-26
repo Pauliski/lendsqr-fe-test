@@ -1,0 +1,46 @@
+.detailtop-wrapper {
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    .back-text {
+      margin-left: 0.875rem;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: #545f7d;
+    }
+  }
+  .details-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.625rem;
+    > p {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 28px;
+      color: #213f7d;
+    }
+    .status-button {
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .blacklist-button {
+      border: 1px solid #e4033b;
+      color: #E4033B;
+      margin-right: 1.25rem;
+    }
+    .active-button {
+      border: 1px solid #39cdcc;
+      color: #39CDCC;
+    }
+  }
+}
