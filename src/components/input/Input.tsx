@@ -15,7 +15,7 @@ const Input = ({ hasButton, type, placeholder, required }: InputProps) => {
     if (inputType !== "password") {
       setInputType("password");
     } else {
-      setInputType(type);
+      setInputType("text");
     }
   };
   return (
@@ -29,6 +29,7 @@ const Input = ({ hasButton, type, placeholder, required }: InputProps) => {
       <button
         style={{ display: hasButton ? "inline" : "none" }}
         onClick={toggleType}
+        type="button"
       >
         {inputType === "text" ? <>HIDE</> : <>SHOW</>}
       </button>

@@ -68,3 +68,13 @@ export const userTableHeader = [
   "Date joined",
   "Status",
 ];
+
+export const detailsPages = [
+  "General Details",
+  "Documents",
+  "Bank Details",
+  "Loans",
+  "Savings",
+  "App and System",
+];
+

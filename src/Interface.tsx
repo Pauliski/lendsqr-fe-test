@@ -30,6 +30,7 @@ export interface EducationInterface {
   loanRepayment: string;
   officeEmail: string;
   monthlyIncome: string[];
+  sector: string
 }
 
 export interface UsersInterface {
@@ -58,4 +59,15 @@ export interface TablePaginatorInterface {
   dataCount: number;
   pageNumber: number;
   limit: number;
+}
+
+export interface RatingSectionProps {
+  amount: string;
+  profile: ProfileInterface;
+  setCurrentDisplay: React.Dispatch<React.SetStateAction<string>>
+}
+
+export interface DetailsMainProps {
+  currentDisplay: string;
+  user: UsersInterface
 }

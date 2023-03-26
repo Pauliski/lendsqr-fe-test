@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import { userTableHeader } from "staticData";
@@ -7,12 +8,14 @@ import { TablePaginationInterface, UsersInterface } from "Interface";
 import TablePaginator from "components/table-paginator/TablePaginator";
 
 const UserTable = () => {
+  const navigate = useNavigate();
   const [users, setUsers] = useState<UsersInterface[] | undefined>();
   const [displayUsers, setDisplayUsers] = useState<
     UsersInterface[] | undefined
   >();
   const [pageNumber, setPageNumber] = useState<number>();
   const [limit, setLimit] = useState(10);
+
   const fetchUser = async () => {
     try {
       const res = await axios.get(
@@ -44,6 +47,10 @@ const UserTable = () => {
     }
   };
 
+  const getDetails = (id: string) => {
+    navigate(`/user-details/${id}`);
+  };
+
   useEffect(() => {
     fetchUser();
   }, []);
@@ -55,59 +62,63 @@ const UserTable = () => {
   return (
     <div>
       <div className="usertable-wrapper">
-        <div className="container">
-          <table>
-            <thead>
-              <tr>
-                {userTableHeader.map((item, index) => (
-                  <th key={index}>
-                    <nav className="th-wrapper">
-                      <p className="th-text">{item}</p>
-                      <img src="/images/filter.svg" alt="filter" />
-                    </nav>
-                  </th>
-                ))}
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {displayUsers?.map((item, index) => (
-                <tr className="table-row" key={index}>
-                  <td>{item.orgName}</td>
-                  <td>{item.userName}</td>
-                  <td>{item.email}</td>
-                  <td>{item.phoneNumber}</td>
-                  <td>
-                    {moment(item.createdAt).format("MMM Do YYYY, h:mm:ss a")}
-                  </td>
-                  {+moment(item.lastActiveDate).format("YYYY") < 2000 ? (
-                    <td >
-                      <span className="inactive status">Inactive</span>
-                    </td>
-                  ) : +moment(item.lastActiveDate).format("YYYY") > 2000 &&
-                    +moment(item.lastActiveDate).format("YYYY") < 2023 ? (
-                    <td>
-                      <span className="pending status">Pending</span>
-                    </td>
-                  ) : +moment(item.lastActiveDate).format("YYYY") > 2023 &&
-                    +moment(item.lastActiveDate).format("YYYY") < 2050 ? (
-                    <td>
-                      <span className="active-status status">Active</span>
-                    </td>
-                  ) : (
-                    <td>
-                      <span className="blacklist status">Blacklist</span>
-                    </td>
-                  )}
-
-                  <td>
-                    <img src="/images/vertdot.svg" alt="vert" />
-                  </td>
+        {users?.length && pageNumber && (
+          <div className="container">
+            <table>
+              <thead>
+                <tr>
+                  {userTableHeader.map((item, index) => (
+                    <th key={index}>
+                      <nav className="th-wrapper">
+                        <p className="th-text">{item}</p>
+                        <img src="/images/filter.svg" alt="filter" />
+                      </nav>
+                    </th>
+                  ))}
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          {users?.length && pageNumber && (
+              </thead>
+              <tbody>
+                {displayUsers?.map((item, index) => (
+                  <tr
+                    className="table-row"
+                    key={index}
+                    onClick={() => getDetails(item.id)}
+                  >
+                    <td>{item.orgName}</td>
+                    <td>{item.userName}</td>
+                    <td>{item.email}</td>
+                    <td>{item.phoneNumber}</td>
+                    <td>
+                      {moment(item.createdAt).format("MMM Do YYYY, h:mm:ss a")}
+                    </td>
+                    {+moment(item.lastActiveDate).format("YYYY") < 2000 ? (
+                      <td>
+                        <span className="inactive status">Inactive</span>
+                      </td>
+                    ) : +moment(item.lastActiveDate).format("YYYY") > 2000 &&
+                      +moment(item.lastActiveDate).format("YYYY") < 2023 ? (
+                      <td>
+                        <span className="pending status">Pending</span>
+                      </td>
+                    ) : +moment(item.lastActiveDate).format("YYYY") > 2023 &&
+                      +moment(item.lastActiveDate).format("YYYY") < 2050 ? (
+                      <td>
+                        <span className="active-status status">Active</span>
+                      </td>
+                    ) : (
+                      <td>
+                        <span className="blacklist status">Blacklist</span>
+                      </td>
+                    )}
+
+                    <td>
+                      <img src="/images/vertdot.svg" alt="vert" />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
             <TablePaginator
               handleLimit={handleLimit}
               handlepage={handlepage}
@@ -115,8 +126,8 @@ const UserTable = () => {
               pageNumber={pageNumber}
               limit={limit}
             />
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
