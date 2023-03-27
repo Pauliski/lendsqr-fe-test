@@ -2,7 +2,6 @@ import { DetailsMainProps } from "Interface";
 import { useState } from "react";
 import "./detailsMain.scss";
 
-
 const DetailsMain = ({ currentDisplay, user }: DetailsMainProps) => {
   return (
     <div className="detailsmain-wrapper">

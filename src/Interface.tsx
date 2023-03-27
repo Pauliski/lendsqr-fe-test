@@ -1,3 +1,12 @@
+import {
+  ChangeEvent,
+  Dispatch,
+  FormEvent,
+  MutableRefObject,
+  RefObject,
+  SetStateAction,
+} from "react";
+
 export interface SocialsInterface {
   facebook: string;
   instagram: string;
@@ -30,7 +39,7 @@ export interface EducationInterface {
   loanRepayment: string;
   officeEmail: string;
   monthlyIncome: string[];
-  sector: string
+  sector: string;
 }
 
 export interface UsersInterface {
@@ -46,12 +55,12 @@ export interface UsersInterface {
   phoneNumber: string;
   userName: string;
   profile: ProfileInterface;
-  socials: SocialsInterface
+  socials: SocialsInterface;
 }
 
-export interface TablePaginationInterface{
-    pageNumber: number;
-    limit?: number
+export interface TablePaginationInterface {
+  pageNumber: number;
+  limit?: number;
 }
 export interface TablePaginatorInterface {
   handleLimit: (limit: number) => void;
@@ -64,10 +73,43 @@ export interface TablePaginatorInterface {
 export interface RatingSectionProps {
   amount: string;
   profile: ProfileInterface;
-  setCurrentDisplay: React.Dispatch<React.SetStateAction<string>>
+  setCurrentDisplay: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface DetailsMainProps {
   currentDisplay: string;
-  user: UsersInterface
+  user: UsersInterface;
+}
+
+export interface FilterSelectInterface {
+  orgName: string;
+  status: string;
+}
+export interface FilterProps {
+  users: UsersInterface[];
+  childFunc: any;
+  setFilterBy: Dispatch<SetStateAction<FilterObjectInterface>>;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  setSelectValue: Dispatch<SetStateAction<FilterSelectInterface>>;
+}
+
+export interface SearchProps {
+  hasButton: boolean;
+  placeholder: string;
+  hasDatalist: boolean;
+  listId?: string;
+  listArray?: any[];
+  filterBy?: string;
+  type?: string | "text";
+  nested?: string;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  style?: object;
+}
+export interface FilterObjectInterface {
+  organization: string;
+  userName: string;
+  email: string;
+  date: string;
+  phoneNumber: string;
+  status: string;
 }

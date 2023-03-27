@@ -19,8 +19,6 @@ const UserDetails = () => {
       if (res.status === 200) {
         const { data } = res;
         setUserData(data);
-        console.log(data);
-        console.log(res);
       }
     } catch (error) {
       console.log(error);

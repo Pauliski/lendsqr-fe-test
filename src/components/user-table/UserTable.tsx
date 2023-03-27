@@ -1,21 +1,67 @@
-import { useEffect, useMemo, useState } from "react";
+import {
+  FormEvent,
+  MutableRefObject,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
-import { userTableHeader } from "staticData";
+import {
+  filterObject,
+  filterSelectObject,
+  userTableHead,
+  userTableHeader,
+} from "staticData";
 import "./userTable.scss";
-import { TablePaginationInterface, UsersInterface } from "Interface";
+import {
+  FilterObjectInterface,
+  FilterSelectInterface,
+  TablePaginationInterface,
+  UsersInterface,
+} from "Interface";
 import TablePaginator from "components/table-paginator/TablePaginator";
+import UserFilter from "components/filter/UserFilter";
+import filter from "components/filter/filter";
 
 const UserTable = () => {
+  const childFunc = useRef<any>(null);
+  const filterRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const [showFilterDiv, setShowFilterDiv] = useState<boolean>(false);
+  const [selectValue, setSelectValue] =
+    useState<FilterSelectInterface>(filterSelectObject);
+  const [filterBy, setFilterBy] = useState<FilterObjectInterface>(filterObject);
+  const [headerData, setHeaderData] = useState(userTableHead);
   const [users, setUsers] = useState<UsersInterface[] | undefined>();
   const [displayUsers, setDisplayUsers] = useState<
     UsersInterface[] | undefined
   >();
   const [pageNumber, setPageNumber] = useState<number>();
   const [limit, setLimit] = useState(10);
-
+  const handleFilterOpen = (name: string) => {
+    // childFunc.current();
+    const newArray = headerData.map((item) => {
+      if (item.text === name) {
+        return { ...item, isActive: !item.isActive };
+      }
+      return { ...item, isActive: false };
+    });
+    setHeaderData(newArray);
+  };
+  const getFilterItem = (objectToFilter: FilterObjectInterface) => {
+    setFilterBy(objectToFilter);
+  };
+  const handleFilter = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (users) {
+      const newFilter = filter(users, filterBy);
+      setDisplayUsers(newFilter);
+      closeFilter();
+    }
+  };
   const fetchUser = async () => {
     try {
       const res = await axios.get(
@@ -25,7 +71,6 @@ const UserTable = () => {
       if (res.status === 200) {
         const { data } = res;
         setUsers(data);
-        console.log(data);
         setPageNumber(1);
         return data;
       }
@@ -51,9 +96,29 @@ const UserTable = () => {
     navigate(`/user-details/${id}`);
   };
 
+  const closeFilter = () => {
+    const newArray = headerData.map((item) => {
+      return { ...item, isActive: false };
+    });
+    setHeaderData(newArray);
+  };
+  const handleClickOutside = (e: MouseEvent) => {
+    if (filterRef.current && !filterRef.current.contains(e?.target as Node)) {
+      closeFilter();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   useEffect(() => {
     fetchUser();
   }, []);
+  useEffect(() => {
+    setFilterBy(filterBy);
+  }, [filterBy]);
   useEffect(() => {
     if (pageNumber) {
       paginateData();
@@ -67,12 +132,26 @@ const UserTable = () => {
             <table>
               <thead>
                 <tr>
-                  {userTableHeader.map((item, index) => (
-                    <th key={index}>
-                      <nav className="th-wrapper">
-                        <p className="th-text">{item}</p>
+                  {headerData.map((item) => (
+                    <th key={item.text}>
+                      <nav
+                        className="th-wrapper"
+                        onClick={() => handleFilterOpen(item.text)}
+                      >
+                        <p className="th-text">{item.text}</p>
                         <img src="/images/filter.svg" alt="filter" />
                       </nav>
+                      {item.isActive && (
+                        <div ref={filterRef}>
+                          <UserFilter
+                            users={users}
+                            childFunc={childFunc}
+                            setFilterBy={setFilterBy}
+                            handleSubmit={handleFilter}
+                            setSelectValue={setSelectValue}
+                          />
+                        </div>
+                      )}
                     </th>
                   ))}
                   <th></th>
