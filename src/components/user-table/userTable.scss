@@ -1,5 +1,6 @@
 .usertable-wrapper {
   margin-top: 2.5rem;
+  min-height: 40.625rem;
 
   // max-width: 75.8125rem;
   max-width: fit-content;
@@ -23,6 +24,7 @@
     width: fit-content;
   }
   table {
+    position: relative;
     width: 100%;
     background-color: #ffffff;
     border: 1px solid rgba(33, 63, 125, 0.06);
@@ -32,6 +34,9 @@
     // width: 64.8125rem;
     tr {
       cursor: pointer;
+      th{
+        position: relative;
+      }
       td {
         border-bottom: 1px solid rgba(33, 63, 125, 0.1);
         font-weight: 400;

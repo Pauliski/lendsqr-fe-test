@@ -12,23 +12,28 @@ function App() {
   let arr = pathName.toString().split("/");
   let currentPath = arr[arr.length - 1];
   return (
-    <div className="App">
-      {currentPath.length > 0 && <Navbar />}
-      <Routes>
-        <Route path="/" element={<Login />} />
-      </Routes>
-      {currentPath.length > 0 &&<main className="auth-routes">
-         <Sidebar />
-        <div className="route-wrapper">
+    <React.StrictMode>
+      <div className="App">
+        {currentPath.length > 0 ? (
+          <>
+            <Navbar />
+            <main className="auth-routes">
+              <Sidebar />
+              <div className="route-wrapper">
+                <Routes>
+                  <Route path="/users" element={<Users />} />
+                  <Route path="/user-details/:id" element={<UserDetails />} />
+                </Routes>
+              </div>
+            </main>
+          </>
+        ) : (
           <Routes>
-            <Route path="/users" element={<Users />} />
+            <Route path="/" element={<Login />} />
           </Routes>
-          <Routes>
-            <Route path="/user-details/:id" element={<UserDetails />} />
-          </Routes>
-        </div>
-      </main>}
-    </div>
+        )}
+      </div>
+    </React.StrictMode>
   );
 }
 

@@ -7,11 +7,19 @@ import Logo from "../images/Logo";
 import "./navbar.scss";
 
 const Navbar = () => {
+  const handleChange = ()=>{
+
+  }
   return (
     <div className="navbar-wrapper">
       <div className="navbar-left">
         <Logo />
-        <Search />
+        <Search
+          hasButton={true}
+          placeholder="Search for anything"
+          hasDatalist={false}
+          handleChange={handleChange}
+        />
       </div>
       <div className="navbar-right">
         <span className="docs">Docs</span>

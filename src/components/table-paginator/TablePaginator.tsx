@@ -51,7 +51,7 @@ const TablePaginator = ({
     const endArray = [index - 1, index];
     SetStartIndice(startArray);
     SetEndIndice(endArray);
-    setIsFewPages(startArray.some((r) => endArray.includes(r)));
+    setIsFewPages(startArray.some((arr) => endArray.includes(arr)));
   }, [tableLimit, startIndex]);
   return (
     <div className="paginator-wrapper">

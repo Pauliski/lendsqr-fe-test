@@ -4,17 +4,22 @@
   height: 2.5rem;
   width: 25rem;
   display: flex;
+
   input {
     border: none;
     outline: none;
     height: 100%;
+    width: 100%;
     background-color: transparent;
     padding: 0.75rem;
     flex: 1;
+    cursor: pointer;
+
     ::placeholder {
       color: #545f7d;
     }
-    :-ms-input-placeholder {
+
+    &:-ms-input-placeholder {
       /* Internet Explorer 10-11 */
       color: #545f7d;
     }
@@ -26,6 +31,6 @@
     width: 3.5rem;
     border: none;
     padding: auto;
-   cursor: pointer;
+    cursor: pointer;
   }
 }

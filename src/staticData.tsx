@@ -69,6 +69,33 @@ export const userTableHeader = [
   "Status",
 ];
 
+export const userTableHead = [
+  {
+    text: "organization",
+    isActive: false,
+  },
+  {
+    text: "Username",
+    isActive: false,
+  },
+  {
+    text: "Email",
+    isActive: false,
+  },
+  {
+    text: "Phone number",
+    isActive: false,
+  },
+  {
+    text: "Date joined",
+    isActive: false,
+  },
+  {
+    text: "Status",
+    isActive: false,
+  },
+];
+
 export const detailsPages = [
   "General Details",
   "Documents",
@@ -78,3 +105,18 @@ export const detailsPages = [
   "App and System",
 ];
 
+export const statusArray = ["Active", "Inactive", "Pending", "Blacklist"];
+
+export const filterObject = {
+  organization: "",
+  userName: "",
+  email: "",
+  date: "",
+  phoneNumber: "",
+  status: "",
+};
+
+export const filterSelectObject = {
+  orgName: "",
+  status: "",
+};
