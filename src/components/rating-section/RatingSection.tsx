@@ -19,7 +19,11 @@ const RatingSection = ({
         <div className="username-wrapper">
           <div className="avatar-wrapper">
             {profile.avatar ? (
-              <img src={profile.avatar} alt="avatar" className="profile-image"/>
+              <img
+                src={profile.avatar}
+                alt="avatar"
+                className="profile-image"
+              />
             ) : (
               <img src="/images/avatar.svg" alt="avatar" />
             )}
@@ -33,9 +37,12 @@ const RatingSection = ({
         </div>
         <div className="star-wrapper">
           <p className="star-text">User’s Tier</p>
-          <img src="/images/shadedStar.svg" alt="star" />
-          <img src="/images/unshadedstar.svg" alt="star" />
-          <img src="/images/unshadedstar.svg" alt="star" />
+          <div>
+            {" "}
+            <img src="/images/shadedStar.svg" alt="star" />
+            <img src="/images/unshadedstar.svg" alt="star" />
+            <img src="/images/unshadedstar.svg" alt="star" />
+          </div>
         </div>
         <div className="amount-wrapper">
           <p className="amount">₦{amount}</p>

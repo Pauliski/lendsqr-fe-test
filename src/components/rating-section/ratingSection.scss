@@ -1,13 +1,14 @@
 .rate-page-wrapper {
   margin-top: 2.5rem;
-  padding: 1.875rem;
+  padding: 1.875rem 2.1739% 1.875rem 2.1739%;
   padding-bottom: 0;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   .page-nav-wrapper {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
     .page-nav {
       font-weight: 400;
       font-size: 16px;
@@ -17,18 +18,17 @@
       padding: 0 1rem 0.625rem 1rem;
       cursor: pointer;
     }
-    .active-page-nav{
-        color: #39CDCC;
-        border-bottom: 2px solid #39CDCC;
+    .active-page-nav {
+      color: #39cdcc;
+      border-bottom: 2px solid #39cdcc;
     }
   }
   .rating-section-wrapper {
     display: flex;
-    margin-bottom: 3.1875rem;
+    flex-direction: column;
     .username-wrapper {
       display: flex;
-      border-right: 1px solid #dddfe5;
-      padding-right: 1.875rem;
+      padding: 2.1739%;
       .avatar-wrapper {
         width: 6.25rem;
         height: 6.25rem;
@@ -38,7 +38,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        .profile-image{
+        .profile-image {
           width: 100%;
           height: 100%;
           border-radius: 100%;
@@ -61,8 +61,11 @@
       }
     }
     .star-wrapper {
-      padding: 1.875rem;
-      border-right: 1px solid #dddfe5;
+      display: flex;
+      padding: 2.1739%;
+      flex-direction: column;
+      justify-content: center;
+
       .star-text {
         font-weight: 500;
         font-size: 0.875rem;
@@ -72,7 +75,11 @@
       }
     }
     .amount-wrapper {
-      padding: 1.875rem;
+      // padding: 1.875rem;
+      padding: 2.1739%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       .amount {
         font-weight: 500;
         font-size: 22px;
@@ -85,6 +92,25 @@
         font-size: 12px;
         line-height: 14px;
         color: #213f7d;
+      }
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .rating-section-wrapper {
+      flex-direction: row;
+      margin-bottom: 3.1875rem;
+      .username-wrapper {
+        border-right: 1px solid #dddfe5;
+        padding-right: 1.875rem;
+      }
+      .star-wrapper {
+        padding: 1.875rem;
+        border-right: 1px solid #dddfe5;
+      }
+      .amount-wrapper {
+      }
+      .page-nav-wrapper {
+        flex-direction: row;
       }
     }
   }
