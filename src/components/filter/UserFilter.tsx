@@ -15,6 +15,9 @@ const UserFilter = ({
     const { value, name } = e.target;
     setUpdateFilter({ ...updateFilter, [name]: value });
   };
+  const handleReset = ()=>{
+    setUpdateFilter(filterObject);
+  }
   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { value, name } = e.target;
     setUpdateFilter({ ...updateFilter, [name]: value });
@@ -134,7 +137,7 @@ const UserFilter = ({
           </select>
         </div>
         <div className="filter-button-wrapper">
-          <button type="reset" className="form-button reset-button">
+          <button type="reset" className="form-button reset-button" onClick={handleReset}>
             Reset
           </button>
           <button type="submit" className="form-button submit-button">

@@ -6,7 +6,6 @@ const TablePaginator = ({
   handleLimit,
   handlepage,
   dataCount,
-  pageNumber,
   limit,
 }: TablePaginatorInterface) => {
   const [startIndex, setStartIndex] = useState(1);

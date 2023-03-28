@@ -1,11 +1,9 @@
-import React, { FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { FormEvent } from "react";
 import Input from "../input/Input";
 import Button from "../button/Button";
 import "./loginRight.scss";
 
 const LoginRight = () => {
-  const navigate = useNavigate();
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     window.location.href = "/users"

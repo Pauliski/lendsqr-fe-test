@@ -1,25 +1,29 @@
 import ArrowDown from "components/images/ArrowDown";
 import Bell from "components/images/Bell";
-import Person from "components/images/Person";
 import Search from "components/search/Search";
-import React from "react";
+import { NavbarProps } from "Interface";
 import Logo from "../images/Logo";
 import "./navbar.scss";
 
-const Navbar = () => {
-  const handleChange = ()=>{
-
-  }
+const Navbar = ({ openSidebar }: NavbarProps) => {
+  const handleChange = () => {};
   return (
     <div className="navbar-wrapper">
       <div className="navbar-left">
+        <button className="burger-wrapper" onClick={openSidebar}>
+          <img src="/images/burger.svg" alt="burger" />
+        </button>
+
         <Logo />
-        <Search
-          hasButton={true}
-          placeholder="Search for anything"
-          hasDatalist={false}
-          handleChange={handleChange}
-        />
+        <div className="search_container">
+          <Search
+            hasButton={true}
+            placeholder="Search for anything"
+            hasDatalist={false}
+            handleChange={handleChange}
+            style={{ width: "100%" }}
+          />
+        </div>
       </div>
       <div className="navbar-right">
         <span className="docs">Docs</span>
@@ -37,7 +41,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {/* <img src="/images/menu.svg" alt="menu" /> */}
     </div>
   );
 };

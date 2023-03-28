@@ -90,7 +90,7 @@ export interface FilterProps {
   childFunc: any;
   setFilterBy: Dispatch<SetStateAction<FilterObjectInterface>>;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  setSelectValue: Dispatch<SetStateAction<FilterSelectInterface>>;
+  
 }
 
 export interface SearchProps {
@@ -112,4 +112,11 @@ export interface FilterObjectInterface {
   date: string;
   phoneNumber: string;
   status: string;
+}
+
+export interface NavbarProps {
+  openSidebar: ()=>void
+}
+export interface SidebarProps {
+  sidebarIsOpen: boolean
 }

@@ -1,27 +1,10 @@
-import {
-  FormEvent,
-  MutableRefObject,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
-import {
-  filterObject,
-  filterSelectObject,
-  userTableHead,
-  userTableHeader,
-} from "staticData";
+import { filterObject, userTableHead } from "staticData";
 import "./userTable.scss";
-import {
-  FilterObjectInterface,
-  FilterSelectInterface,
-  TablePaginationInterface,
-  UsersInterface,
-} from "Interface";
+import { FilterObjectInterface, UsersInterface } from "Interface";
 import TablePaginator from "components/table-paginator/TablePaginator";
 import UserFilter from "components/filter/UserFilter";
 import filter from "components/filter/filter";
@@ -30,9 +13,6 @@ const UserTable = () => {
   const childFunc = useRef<any>(null);
   const filterRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const [showFilterDiv, setShowFilterDiv] = useState<boolean>(false);
-  const [selectValue, setSelectValue] =
-    useState<FilterSelectInterface>(filterSelectObject);
   const [filterBy, setFilterBy] = useState<FilterObjectInterface>(filterObject);
   const [headerData, setHeaderData] = useState(userTableHead);
   const [users, setUsers] = useState<UsersInterface[] | undefined>();
@@ -42,7 +22,6 @@ const UserTable = () => {
   const [pageNumber, setPageNumber] = useState<number>();
   const [limit, setLimit] = useState(10);
   const handleFilterOpen = (name: string) => {
-    // childFunc.current();
     const newArray = headerData.map((item) => {
       if (item.text === name) {
         return { ...item, isActive: !item.isActive };
@@ -50,9 +29,6 @@ const UserTable = () => {
       return { ...item, isActive: false };
     });
     setHeaderData(newArray);
-  };
-  const getFilterItem = (objectToFilter: FilterObjectInterface) => {
-    setFilterBy(objectToFilter);
   };
   const handleFilter = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -70,6 +46,7 @@ const UserTable = () => {
 
       if (res.status === 200) {
         const { data } = res;
+        localStorage.setItem("localUsers", JSON.stringify(data));
         setUsers(data);
         setPageNumber(1);
         return data;
@@ -114,7 +91,18 @@ const UserTable = () => {
   }, []);
 
   useEffect(() => {
-    fetchUser();
+    if (localStorage.getItem("localUsers")) {
+      const usersFromLocalStorage = localStorage.getItem("localUsers");
+      
+      
+      if (usersFromLocalStorage) {
+        let item = JSON.parse(usersFromLocalStorage);
+        setUsers(item);
+        setPageNumber(1);
+      }
+    } else {
+      fetchUser();
+    }
   }, []);
   useEffect(() => {
     setFilterBy(filterBy);
@@ -148,7 +136,6 @@ const UserTable = () => {
                             childFunc={childFunc}
                             setFilterBy={setFilterBy}
                             handleSubmit={handleFilter}
-                            setSelectValue={setSelectValue}
                           />
                         </div>
                       )}
