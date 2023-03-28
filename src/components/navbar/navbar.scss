@@ -12,7 +12,7 @@
   .navbar-left {
     display: flex;
     align-items: center;
-    .burger-wrapper{
+    .burger-wrapper {
       background-color: transparent;
       border: none;
       margin-right: 1rem;
@@ -73,10 +73,9 @@
     }
   }
   @media screen and (min-width: 768px) {
-    
   }
-  @media screen and (min-width: 820px) {
-position: relative;
+  @media screen and (min-width: 850px) {
+    position: relative;
     .navbar-left {
       width: 75%;
       flex-direction: row;
@@ -87,9 +86,9 @@ position: relative;
         width: 56.101%;
         min-width: 350px;
       }
-      .burger-wrapper{
-      display: none;
-    }
+      .burger-wrapper {
+        display: none;
+      }
     }
   }
 
@@ -130,4 +129,5 @@ position: relative;
       }
     }
   }
+   
 }
