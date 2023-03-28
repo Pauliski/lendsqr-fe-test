@@ -1,26 +1,20 @@
 .sidebar-wrapper {
   background-color: #ffffff;
-  width: 17.6875rem;
-  padding: 2.5rem 0;
-  // height: calc(100vh - 92px);
-  // order: 1;
-  
-  // height: max-content;
-  overflow-y: auto;
+  width: 0;
   scrollbar-width: 2px;
   &::-webkit-scrollbar {
     width: 4px;
-}
+  }
 
-&::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
 
-&::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
- 
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+  }
+
   .switch-wrapper {
     display: flex;
     align-items: center;
@@ -43,27 +37,24 @@
     }
   }
   .link-wrapper {
-    .customer-link{
-       
+    .customer-link {
     }
-  
   }
-    .nav-link {
-      padding: 0.625rem 0 0.625rem 1.875rem;
-      margin-bottom: 0.625rem;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-    //   background-color: yellow;
-      
-      .link-text {
-        margin-left: 0.625rem;
-      }
+  .nav-link {
+    padding: 0.625rem 0 0.625rem 1.875rem;
+    margin-bottom: 0.625rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .link-text {
+      margin-left: 0.625rem;
     }
-    .link-border{
-        background-color: lightblue;
-        border-left: 3px solid #39CDCC;
-    }
+  }
+  .link-border {
+    background-color: lightblue;
+    border-left: 3px solid #39cdcc;
+  }
   .link-header {
     font-weight: 500;
     font-size: 0.75rem;
@@ -72,7 +63,21 @@
     margin-bottom: 0.625rem;
     padding-left: 1.875rem;
   }
-  .settings{
+  .settings {
     margin-top: 1.875rem;
   }
+   @media screen and (min-width: 768px) {
+    display: block;
+    width: 17.6875rem;
+  }
+}
+.open-sidebar{
+  position: relative;
+  display: block;
+  top: 7.25rem;
+  width: 17.6875rem;
+  padding: 2.5rem 0;
+  z-index: 10;
+  position: fixed;
+  transition: 0.5s ease-out;
 }

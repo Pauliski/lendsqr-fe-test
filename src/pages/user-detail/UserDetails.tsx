@@ -5,6 +5,7 @@ import RatingSection from "components/rating-section/RatingSection";
 import { UsersInterface } from "Interface";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./userDetails.scss"
 
 const UserDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -29,7 +30,7 @@ const UserDetails = () => {
     fetchUserById();
   }, []);
   return (
-    <div>
+    <div className="user">
       {userData && (
         <>
           <DetailsTop />

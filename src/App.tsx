@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/login/Login";
 import "./App.scss";
@@ -11,14 +11,16 @@ function App() {
   let pathName = window.location.pathname;
   let arr = pathName.toString().split("/");
   let currentPath = arr[arr.length - 1];
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
+  const openSidebar = () => setSidebarIsOpen(!sidebarIsOpen);
   return (
     <React.StrictMode>
       <div className="App">
         {currentPath.length > 0 ? (
           <>
-            <Navbar />
+            <Navbar openSidebar={openSidebar} />
             <main className="auth-routes">
-              <Sidebar />
+              <Sidebar sidebarIsOpen={sidebarIsOpen} />
               <div className="route-wrapper">
                 <Routes>
                   <Route path="/users" element={<Users />} />

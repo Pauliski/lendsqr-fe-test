@@ -14,28 +14,28 @@ const filter = (
     }
   });
   for (let i = 0; i < validKey.length; i++) {
-    if ((validKey[i] as keyof typeof filterObject) == "phoneNumber") {
+    if ((validKey[i] as keyof typeof filterObject) === "phoneNumber") {
       const newArray = userArray.filter((item) => {
         return (
-          item["profile"]["phoneNumber"] ==
+          item["profile"]["phoneNumber"] ===
           filterObject[validKey[i] as keyof typeof filterObject]
         );
       });
       userArray = newArray;
-    } else if ((validKey[i] as keyof typeof filterObject) == "date") {
+    } else if ((validKey[i] as keyof typeof filterObject) === "date") {
       const formattedDate = moment(
         filterObject[validKey[i] as keyof typeof filterObject]
       ).format("MMM Do YY");
       const newArray = userArray.filter((item) => {
         const userCreatedAt = moment(item["createdAt"]).format("MMM Do YY");
-        return userCreatedAt == formattedDate;
+        return userCreatedAt === formattedDate;
       });
       userArray = newArray;
     } else {
       if (filterObject[validKey[i] as keyof typeof filterObject].length) {
         const newArray = userArray.filter((item) => {
           return (
-            item[validKey[i] as keyof typeof item] ==
+            item[validKey[i] as keyof typeof item] ===
             filterObject[validKey[i] as keyof typeof filterObject]
           );
         });

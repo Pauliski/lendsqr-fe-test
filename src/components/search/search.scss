@@ -4,7 +4,21 @@
   height: 2.5rem;
   width: 25rem;
   display: flex;
-
+  ::-webkit-datetime-edit-text,
+  input[type="date"]:in-range::-webkit-datetime-edit-year-field,
+  input[type="date"]:in-range::-webkit-datetime-edit-month-field,
+  input[type="date"]:in-range::-webkit-datetime-edit-day-field {
+    display: none;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    color: black;
+    cursor: pointer;
+  }
+  input[type="date"] {
+    ::before {
+      content: "Date";
+    }
+  }
   input {
     border: none;
     outline: none;
@@ -14,11 +28,20 @@
     padding: 0.75rem;
     flex: 1;
     cursor: pointer;
-
+    
     ::placeholder {
       color: #545f7d;
     }
 
+    &::-webkit-calendar-picker-indicator {
+      color: transparent;
+      cursor: pointer;
+    }
+
+    :focus::-webkit-datetime-edit {
+      color: #000;
+      opacity: 1;
+    }
     &:-ms-input-placeholder {
       /* Internet Explorer 10-11 */
       color: #545f7d;

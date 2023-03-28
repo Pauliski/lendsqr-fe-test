@@ -1,7 +1,5 @@
-import axios from "axios";
 import UserCard from "components/user-card/UserCard";
 import UserTable from "components/user-table/UserTable";
-import { useEffect, useState } from "react";
 import { cardDetails } from "staticData";
 import "./users.scss";
 

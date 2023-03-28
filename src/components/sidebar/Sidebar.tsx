@@ -1,9 +1,10 @@
+import { SidebarProps } from "Interface";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { sidebarNav, businessNav, settingsNav } from "../../staticData";
 import "./sidebar.scss";
 
-const Sidebar = () => {
+const Sidebar = ({ sidebarIsOpen }: SidebarProps) => {
   const [activeLink, setActiveLink] = useState<string>("Users");
   const navigate = useNavigate();
   const handleClick = (route: string) => {
@@ -15,7 +16,7 @@ const Sidebar = () => {
     }
   };
   return (
-    <aside className="sidebar-wrapper">
+    <aside className={sidebarIsOpen ? "sidebar-wrapper open-sidebar" : "sidebar-wrapper"}>
       <nav className="switch-wrapper">
         <img src="/images/switch.svg" alt="switch" />
         <span className="switch-text">Switch Organization</span>
